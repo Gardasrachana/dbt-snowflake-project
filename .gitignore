@@ -1,9 +1,5 @@
-# Python virtual environments
-dbt-snowflake/
-.venv/
-venv/
-env/
 
-# Python cache files
-__pycache__/
-*.py[cod]
+.env
+.dbt_profiles/
+!netflix_dbt/.dbt_profiles/
+!netflix_dbt/.dbt_profiles/profiles.example.yml

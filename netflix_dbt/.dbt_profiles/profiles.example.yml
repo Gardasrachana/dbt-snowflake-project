@@ -1,0 +1,13 @@
+netflix_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: <ACCOUNT_LOCATOR>
+      user: <USERNAME>
+      password: <PASSWORD>
+      role: ACCOUNTADMIN
+      warehouse: COMPUTE_WH
+      database: PROD
+      schema: DBT_TRANSFORM
+      threads: 4

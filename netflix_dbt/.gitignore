@@ -1,7 +1,8 @@
-
-target/
-dbt_packages/
-logs/
-
+.venv/
 .env
-.dbt_profiles/
+.dbt_profiles/*
+!.dbt_profiles/profiles.example.yml
+target/
+logs/
+dbt_packages/
+.DS_Store

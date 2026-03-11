@@ -21,4 +21,5 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: ['ACTOR', 'DIRECTOR']
+              arguments:
+                values: ["ACTOR", "DIRECTOR"]
