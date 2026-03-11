@@ -1,0 +1,25 @@
+WITH votes AS (
+    SELECT
+        ID,
+        COALESCE(IMDB_ID, 'N/A') AS IMDB_ID,
+        COALESCE(IMDB_SCORE, 0) AS IMDB_SCORE,
+        COALESCE(IMDB_VOTES, 0) AS IMDB_VOTES,
+        COALESCE(TMDB_POPULARITY, 0) AS TMDB_POPULARITY,
+        COALESCE(TMDB_SCORE, 0) AS TMDB_SCORE
+    FROM {{ ref('SCORES_VOTES_DIM') }}
+)
+ 
+SELECT
+    d.TITLE,
+    d.TYPE,
+    d.DESCRIPTION,
+    d.RELEASE_YEAR,
+    v.ID,
+    v.IMDB_ID,
+    v.IMDB_SCORE,
+    v.IMDB_VOTES,
+    v.TMDB_POPULARITY,
+    v.TMDB_SCORE
+FROM {{ ref('SHOW_DETAILS_DIM') }} d
+LEFT JOIN votes v
+    ON d.ID = v.ID

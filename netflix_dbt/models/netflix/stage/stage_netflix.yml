@@ -1,0 +1,25 @@
+version: 2
+ 
+models:
+  - name: SHOW_DETAILS_DIM
+    columns:
+      - name: ID
+        tests: [not_null]
+      - name: TITLE
+        tests: [not_null]
+ 
+  - name: SCORES_VOTES_DIM
+    columns:
+      - name: ID
+        tests: [not_null]
+ 
+  - name: CREDITS_DIM
+    columns:
+      - name: ID
+        tests: [not_null]
+      - name: ROLE
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["ACTOR", "DIRECTOR"]

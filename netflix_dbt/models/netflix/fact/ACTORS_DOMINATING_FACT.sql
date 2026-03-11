@@ -1,0 +1,16 @@
+WITH actors AS (
+    SELECT ID, NAME
+    FROM {{ ref('CREDITS_DIM') }}
+    WHERE ROLE = 'ACTOR'
+)
+ 
+SELECT
+    REPLACE(REPLACE(UPPER(sd.GENRES), '[', ''), ']', '') AS GENRES,
+    a.NAME,
+    COUNT(*) AS PERFORMANCES
+FROM {{ ref('SHOW_DETAILS_DIM') }} sd
+JOIN actors a
+    ON sd.ID = a.ID
+WHERE sd.GENRES IS NOT NULL
+  AND a.NAME IS NOT NULL
+GROUP BY 1, 2
